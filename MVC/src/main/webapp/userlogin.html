@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>user login</title>
+<style type="text/css">
+div{
+    width:350px;
+    height:150px;
+    top:30%;
+    left:40%;
+    text-align:center;
+    position:absolute;
+    align-content:center;
+   }
+input{
+      margin-bottom:10%;
+      width:250px;
+      height:30px;
+     }
+body{
+      background-image: url("shopping.jpg");
+      background-repeat:no-repeat;
+      background-size:100%;
+    }
+ form{
+      display:grid;
+      grid-template-columns:200px 80px;
+      }
+   h1{
+       text-align:center;
+       position:absolute;
+       align-content:center;
+       left:43%;
+       top:15%;
+     } 
+.input1{
+        border:none;
+        border-radius:10px;
+        background-color:aqua;
+        color:black;
+        font-size:15px;
+       }
+     a{
+        margin-left:25%;
+        color:gray;
+      }
+.input2:hover{
+               background-color:yellow;
+               cursor:pointer;
+             }          
+</style>
+</head>
+<body>
+<h1>User Login</h1>
+<div>
+<form id="valid" action="user" method="post" autocomplete="off" autofocus="autofocus">
+<input id="name" class="input1" type="text" name="uname" placeholder="username" maxlength="20"><br>
+<input id="pass" class="input1" type="text" name="upass" placeholder="password" maxlength="20"><br>
+<input type="submit" value="login" class="input1 input2"/><br>
+<a href="userregister.html">New user Registration</a>
+</form>
+</div>
+<script type="text/javascript">
+   document.getElementById("valid").onsubmit=function(valid)
+   {
+	   const uname=document.getElementById("name").value;
+	   const upass=document.getElementById("pass").value;
+	   let upper=0;let lower=0;
+	   for(let i=0;i<uname.length;i++)
+	   {
+		   let ch=uname.charAt(i);
+	         if(ch>='A' && ch<='Z')
+			 {
+	            upper++;
+			 }
+	         else if(ch>='a' && ch<='z')
+			 {
+	            lower++;
+			 } 
+	   }
+	   let upper1=0;let lower1=0;let digit=0;let symbol=0;
+	   for(let i=0;i<upass.length;i++)
+	   {
+		   let ch=upass.charAt(i);
+	         if(ch>='A' && ch<='Z')
+			 {
+	            upper1++;
+			 }
+	         else if(ch>='a' && ch<='z')
+			 {
+	            lower1++;
+			 } 
+	         else if(ch>='0' && ch<='9')
+	         {
+	        	 digit++;
+	         }
+	         else
+	         {
+	        	 symbol++;
+	         }
+	   }
+	   if(uname=="")
+	   {
+		   alert('enter username');
+		   valid.preventDefault();
+	   }
+	   else if(upass=="")
+	   {
+		   alert('enter password');
+		   valid.preventDefault(); 
+	   }
+	   else if(uname.length<4)
+	   {
+		   alert('invalid username');
+		   valid.preventDefault();
+	   }
+	   else if(upass.length<4)
+	   {
+		   alert('invalid password');
+		   valid.preventDefault(); 
+	   }
+	   else if(upper<1 || lower<1)
+	     {
+			 alert('invalid username creadentials') ;
+			 valid.preventDefault();
+	     }
+	   else if(upper<1 || lower1<1 || digit<1 || symbol<1)
+		{
+		   alert('invalid password credentials');
+		   valid.preventDefault();
+		}
+   }
+</script>
+
+</body>
+</html>
